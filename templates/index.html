@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<head>
+  <title>Find your rhythm game arcades now!</title>
+</head>
+
+<body>
+  <h1>Rhythm Game Cabinet Finder-inator 2000</h1>
+
+  <form name="Select country" method="post">
+    <label for="start">Country:
+    </label>
+    <select name="Country" id="Country">
+      <option value="Select country" selected="SELECTED">Select country</option>
+      {% for country in countries %}
+        <option value="{{country}}">{{country}}</option>
+      {% endfor %}
+    </select>
+    <input type="submit" name="Search">
+  </form>
+
+  {% for arcade in arcades %}
+    <p>{{arcade}}</p>
+  {% endfor %}
+
+</body>
