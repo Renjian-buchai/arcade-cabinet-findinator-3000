@@ -60,7 +60,7 @@ def arcade(selected_country: str, arcade: str):
     arcade_info = None
     with connect() as db:
         cabinets = db.execute(
-            """ select cabinets.cabinet_name, cabinet_info.count from cabinets 
+            """ select cabinets.cabinet_name,  cabinet_info.cost_per_game, cabinet_info.count from cabinets 
                 join cabinet_info on cabinet_info.cabinet_id = cabinets.cabinet_id 
                 join arcades on cabinet_info.arcade_id = arcades.arcade_id
                 where arcades.name = ?;""",
@@ -73,8 +73,9 @@ def arcade(selected_country: str, arcade: str):
             (arcade,),
         )
 
-    cabinets = dict([(cabinet[0].strip(), cabinet[1]) for cabinet in cabinets])
-
+    cabinets = [
+        (cabinet[0].strip(), cabinet[1].strip(), cabinet[2]) for cabinet in cabinets
+    ]
     # If there's more than 1, I think we're really fucked now
     arcade_info = list(arcade_info)[0]
 

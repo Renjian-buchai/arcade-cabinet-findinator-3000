@@ -24,16 +24,18 @@
   </h1>
   <table class="cabinet-table" border="1">
     <tr>
-      <th>
-        <p>Cabinet</p>
+      <th class="cabinet-cell">
+        Cabinet
       </th>
-      <th>Count</th>
+      <th class="cabinet-cell">Cost</th>
+      <th class="cabinet-cell">Count</th>
     </tr>
     {% for cabinet in cabinets %}
       <tr>
-        <td>
-          {{cabinet}}</td>
-        <td style="text-align:center">{{cabinets[cabinet]}}</td>
+        <td class="cabinet-cell">
+          {{cabinet[0]}}</td>
+        <td class="cabinet-cell">{{cabinet[1]}}</td>
+        <td style="text-align:center" class="cabinet-cell">{{cabinet[2]}}</td>
       </tr>
     {% endfor %}
   </table>
