@@ -17,13 +17,12 @@
     <input type="submit" name="Search">
   </form>
 
-  {% if selected_country != "" %}
-    <h2>Results for
-      {{selected_country}}</h2>
-  {% endif %}
-
-  {% for arcade in arcades %}
-    <p>{{arcade}}</p>
-  {% endfor %}
-
+  <h2>Available countries:</h2>
+  <ul>
+    {% for country in countries %}
+      <li>
+        <a href="{{country}}">{{country}}</p>
+      </li>
+    {% endfor %}
+  </ul>
 </body>

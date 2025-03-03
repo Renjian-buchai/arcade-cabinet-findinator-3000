@@ -3,6 +3,16 @@
 {% include "header.html" %}
 
 <body>
-  <h1>Results for
-    {{selected_country}}</h1>
+  <h2>Results for
+    {{selected_country}}</h2>
+
+  <ul>
+    {% for arcade in arcades %}
+      <li>
+        <a href="{{arcade}}/">
+          {{arcade}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 </body>

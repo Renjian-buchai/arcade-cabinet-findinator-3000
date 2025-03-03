@@ -1,0 +1,34 @@
+{% include "header.html" %}
+
+<body>
+  <h2>
+    {{arcade}}
+  </h2>
+
+  <h3>Address</h3>
+  <div style="white-space:pre-line;">
+    <p class="metap">{{address}}</p>
+    <h3>Contact Number</h3>
+    <p class="metap">{{phone_no}}</p>
+    <h3>Operating Times</h3>
+    <p class="metap">{{operating_time}}</p>
+    <h3>Website(s)</h3>
+    <!-- I don't know why this one is suddenly -4em, but ye -->
+    <p style="margin-top: -4em">
+      <a href="{{website}}" style="display: inline">{{website}}</a>
+    </p>
+  </div>
+
+  <h2>Cabinets
+    <hr>
+  </h2>
+
+  <ul>
+    {% for cabinet in cabinets %}
+      <li>
+        {{cabinet}},
+        {{cabinets[cabinet]}}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
