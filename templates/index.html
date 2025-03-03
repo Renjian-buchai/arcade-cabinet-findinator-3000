@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
-<head>
-  <title>Find your rhythm game arcades now!</title>
-</head>
+{% include "header.html" %}
 
 <body>
   <h1>Rhythm Game Cabinet Finder-inator 2000</h1>
@@ -18,6 +16,11 @@
     </select>
     <input type="submit" name="Search">
   </form>
+
+  {% if selected_country != "" %}
+    <h2>Results for
+      {{selected_country}}</h2>
+  {% endif %}
 
   {% for arcade in arcades %}
     <p>{{arcade}}</p>
