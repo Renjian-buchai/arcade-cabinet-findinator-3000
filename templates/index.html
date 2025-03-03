@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 
-{% include "header.html" %}
+{% include "head.html" %}
 
 <body>
-  <h1>Rhythm Game Cabinet Finder-inator 2000</h1>
+  {% include "header.html" %}
+  <div style="margin:8px">
+    <section>
+      <form name="Select country" method="post">
+        <label for="start">Country:
+        </label>
+        <select name="Country" id="Country">
+          <option value="Select country" selected="SELECTED">Select country</option>
+          {% for country in countries %}
+            <option value="{{country}}">{{country}}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" name="Search">
+      </form>
+    </section>
 
-  <form name="Select country" method="post">
-    <label for="start">Country:
-    </label>
-    <select name="Country" id="Country">
-      <option value="Select country" selected="SELECTED">Select country</option>
-      {% for country in countries %}
-        <option value="{{country}}">{{country}}</option>
-      {% endfor %}
-    </select>
-    <input type="submit" name="Search">
-  </form>
-
-  <h2>Available countries:</h2>
-  <ul>
-    {% for country in countries %}
-      <li>
-        <a href="{{country}}">{{country}}</p>
-      </li>
-    {% endfor %}
-  </ul>
+    <section>
+      <h1>Available countries:</h1>
+      <ul>
+        {% for country in countries %}
+          <li>
+            <a href="{{country}}">{{country}}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
 </body>

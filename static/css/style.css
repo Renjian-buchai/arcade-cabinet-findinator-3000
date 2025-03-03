@@ -16,3 +16,22 @@ p {
 .cabinet-cell {
   padding: 0.5em;
 }
+
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: fit-content;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  -o-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0;
+  border-radius: 0;
+  background-color: lightgray;
+}
+
+body {
+  margin: 0;
+}

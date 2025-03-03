@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 
-{% include "header.html" %}
+{% include "head.html" %}
 
 <body>
-  <h1>Results for
-    {{selected_country}}</h1>
+  {% include "header.html" %}
 
-  <ul>
-    {% for arcade in arcades %}
-      <li>
-        <a href="{{arcade}}/">
-          {{arcade}}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+  <div style="margin:8px">
+    <h1>Results for
+      {{selected_country}}</h1>
+
+    <ul>
+      {% for arcade in arcades %}
+        <li>
+          <a href="{{arcade}}/">
+            {{arcade}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </body>

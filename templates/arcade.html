@@ -1,42 +1,48 @@
-{% include "header.html" %}
+<!DOCTYPE html>
+{% include "head.html" %}
 
 <body>
-  <h1 style="text-align:center;">
-    {{arcade}}
-  </h1>
+  {% include "header.html" %}
 
-  <h2>Address</h2>
-  <div style=" white-space:pre-line;">
-    <p class="meta-p">{{address}}</p>
-    <h2>Contact Number</h2>
-    <p class="meta-p">{{phone_no}}</p>
-    <h2>Operating Times</h2>
-    <p class="meta-p">{{operating_time}}</p>
-    <h2>Website(s)</h2>
-    <!-- I don't know why this one is suddenly -4em, but ye -->
-    <p style="margin-top: -4em">
-      <a href="{{website}}" style="display: inline">{{website}}</a>
-    </p>
-  </div>
+  <div style="margin:8px">
 
-  <h1 style="text-align:center">Cabinets
-    <hr>
-  </h1>
-  <table class="cabinet-table" border="1">
-    <tr>
-      <th class="cabinet-cell">
-        Cabinet
-      </th>
-      <th class="cabinet-cell">Cost</th>
-      <th class="cabinet-cell">Count</th>
-    </tr>
-    {% for cabinet in cabinets %}
+    <h1 style="text-align:center;">
+      {{arcade}}
+    </h1>
+
+    <h2>Address</h2>
+    <div style=" white-space:pre-line;">
+      <p class="meta-p">{{address}}</p>
+      <h2>Contact Number</h2>
+      <p class="meta-p">{{phone_no}}</p>
+      <h2>Operating Times</h2>
+      <p class="meta-p">{{operating_time}}</p>
+      <h2>Website(s)</h2>
+      <!-- I don't know why this one is suddenly -4em, but ye -->
+      <p style="margin-top: -4em">
+        <a href="{{website}}" style="display: inline">{{website}}</a>
+      </p>
+    </div>
+
+    <h1 style="text-align:center">Cabinets
+      <hr>
+    </h1>
+    <table class="cabinet-table" border="1">
       <tr>
-        <td class="cabinet-cell">
-          {{cabinet[0]}}</td>
-        <td class="cabinet-cell">{{cabinet[1]}}</td>
-        <td style="text-align:center" class="cabinet-cell">{{cabinet[2]}}</td>
+        <th class="cabinet-cell">
+          Cabinet
+        </th>
+        <th class="cabinet-cell">Cost</th>
+        <th class="cabinet-cell">Count</th>
       </tr>
-    {% endfor %}
-  </table>
+      {% for cabinet in cabinets %}
+        <tr>
+          <td class="cabinet-cell">
+            {{cabinet[0]}}</td>
+          <td class="cabinet-cell">{{cabinet[1]}}</td>
+          <td style="text-align:center" class="cabinet-cell">{{cabinet[2]}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
 </body>
