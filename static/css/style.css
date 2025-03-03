@@ -2,7 +2,16 @@ p {
   font-size: large;
 }
 
-.metap {
+.meta-p {
   margin-top: -2em;
   margin-bottom: -1em;
+}
+
+.cabinet-table {
+  border: solid 2px black;
+  margin: 1em;
+}
+
+.row {
+  margin: 1em;
 }

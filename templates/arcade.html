@@ -1,34 +1,40 @@
 {% include "header.html" %}
 
 <body>
-  <h2>
+  <h1 style="text-align:center;">
     {{arcade}}
-  </h2>
+  </h1>
 
-  <h3>Address</h3>
-  <div style="white-space:pre-line;">
-    <p class="metap">{{address}}</p>
-    <h3>Contact Number</h3>
-    <p class="metap">{{phone_no}}</p>
-    <h3>Operating Times</h3>
-    <p class="metap">{{operating_time}}</p>
-    <h3>Website(s)</h3>
+  <h2>Address</h2>
+  <div style=" white-space:pre-line;">
+    <p class="meta-p">{{address}}</p>
+    <h2>Contact Number</h2>
+    <p class="meta-p">{{phone_no}}</p>
+    <h2>Operating Times</h2>
+    <p class="meta-p">{{operating_time}}</p>
+    <h2>Website(s)</h2>
     <!-- I don't know why this one is suddenly -4em, but ye -->
     <p style="margin-top: -4em">
       <a href="{{website}}" style="display: inline">{{website}}</a>
     </p>
   </div>
 
-  <h2>Cabinets
+  <h1 style="text-align:center">Cabinets
     <hr>
-  </h2>
-
-  <ul>
+  </h1>
+  <table class="cabinet-table" border="1">
+    <tr>
+      <th>
+        <p>Cabinet</p>
+      </th>
+      <th>Count</th>
+    </tr>
     {% for cabinet in cabinets %}
-      <li>
-        {{cabinet}},
-        {{cabinets[cabinet]}}
-      </li>
+      <tr>
+        <td>
+          {{cabinet}}</td>
+        <td style="text-align:center">{{cabinets[cabinet]}}</td>
+      </tr>
     {% endfor %}
-  </ul>
+  </table>
 </body>
