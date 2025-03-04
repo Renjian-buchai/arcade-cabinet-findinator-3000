@@ -68,23 +68,24 @@ def arcade(selected_country: str, arcade: str):
         )
 
         arcade_info = db.execute(
-            """ select arcades.address, arcades.phone_no, arcades.operating_time, arcades.website from arcades
+            """ select arcades.address, arcades.phone_no, arcades.operating_time, arcades.website, arcades.completed, arcades.last_updated from arcades
                 where arcades.name = ?;""",
             (arcade,),
         )
 
-    cabinets = [
+    cabinets: list[tuple] = [
         (cabinet[0].strip(), cabinet[1].strip(), cabinet[2]) for cabinet in cabinets
     ]
+
     # If there's more than 1, I think we're really fucked now
     arcade_info = list(arcade_info)[0]
 
-    address = arcade_info[0].strip()
-    phone_no = arcade_info[1]
-    operating_time = arcade_info[2]
-    website = arcade_info[3]
-
-    print(cabinets)
+    address: str = arcade_info[0].strip()
+    phone_no: str = arcade_info[1]
+    operating_time: str = arcade_info[2]
+    website: str = arcade_info[3]
+    completed: bool = bool(arcade_info[4])
+    last_updated: str = arcade_info[5]
 
     return render_template(
         "arcade.html",
@@ -94,6 +95,8 @@ def arcade(selected_country: str, arcade: str):
         operating_time=operating_time,
         website=website,
         cabinets=cabinets,
+        completed=completed,
+        last_updated=last_updated,
     )
 
 
