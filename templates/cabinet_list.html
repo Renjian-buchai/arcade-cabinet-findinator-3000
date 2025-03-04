@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+{% include "head.html" %}
+
+<body>
+  {% include "header.html" %}
+
+  <div style="margin:8px">
+    <h1>Cabinet List</h1>
+    <ul>
+      {% for cabinet in cabinet_list %}
+        <li>
+          <a href="/cabinets/{{cabinet}}">{{cabinet}}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  </div>
+</body>

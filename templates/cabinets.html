@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+{% include "head.html" %}
+
+<body>
+  {% include "header.html" %}
+
+  <div style="margin:8px">
+    <h1>{{cabinet_name}}</h1>
+    <ul>
+      {% for cabinet_spec in cabinet_desc %}
+        {% if cabinet_spec.strip() != "" %}
+          <li>{{cabinet_spec}}</li>
+        {% else %}
+          <h3 style="color:red">Incomplete! Send death threats to me at
+            <a href="segfault@stressd.xyz">segfault@stressd.xyz</a>
+          </h3>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+  </div>
+</body>

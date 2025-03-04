@@ -97,8 +97,41 @@ def arcade(selected_country: str, arcade: str):
     )
 
 
+@app.route("/cabinets/<cabinet>/")
+def cabinets(cabinet: str) -> str:
+    cabinet_name = None
+    cabinet_desc = None
+
+    with connect() as db:
+        cabinet_data = list(
+            db.execute(
+                """ select cabinet_name, cabinet_description from cabinets 
+                where cabinet_name like ?;""",
+                (cabinet,),
+            )
+        )
+
+        cabinet_name = cabinet_data[0][0]
+        cabinet_desc = cabinet_data[0][1].split("\n")
+
+    return render_template(
+        "cabinets.html", cabinet_name=cabinet_name, cabinet_desc=cabinet_desc
+    )
+
+
+@app.route("/cabinets/")
+def cabinet_list() -> str:
+    cabinet_list = None
+
+    with connect() as db:
+        cabinet_data = list(db.execute(""" select cabinet_name from cabinets;"""))
+        cabinet_list = [cabinet[0] for cabinet in cabinet_data]
+
+    return render_template("cabinet_list.html", cabinet_list=cabinet_list)
+
+
 if __name__ == "__main__":
-    app.run(debug=True, port=443)
+    app.run(debug=True, port=6942)
 
     app.jinja_env.lstrip_blocks = True
     app.jinja_env.trim_blocks = True
