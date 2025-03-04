@@ -98,7 +98,7 @@ def arcade(selected_country: str, arcade: str):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=443)
+    app.run(debug=False, port=443)
 
     app.jinja_env.lstrip_blocks = True
     app.jinja_env.trim_blocks = True
