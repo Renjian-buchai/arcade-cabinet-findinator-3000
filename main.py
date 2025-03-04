@@ -84,7 +84,7 @@ def arcade(selected_country: str, arcade: str):
     operating_time = arcade_info[2]
     website = arcade_info[3]
 
-    print(address)
+    print(cabinets)
 
     return render_template(
         "arcade.html",
@@ -98,7 +98,7 @@ def arcade(selected_country: str, arcade: str):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=6942)
+    app.run(debug=True, port=443)
 
     app.jinja_env.lstrip_blocks = True
     app.jinja_env.trim_blocks = True

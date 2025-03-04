@@ -13,36 +13,42 @@
     <h2>Address</h2>
     <div style=" white-space:pre-line;">
       <p class="meta-p">{{address}}</p>
-      <h2>Contact Number</h2>
-      <p class="meta-p">{{phone_no}}</p>
+      {% if phone_no != None %}
+        <h2>Contact Number</h2>
+        <p class="meta-p">{{phone_no}}</p>
+      {% endif %}
       <h2>Operating Times</h2>
       <p class="meta-p">{{operating_time}}</p>
-      <h2>Website(s)</h2>
-      <!-- I don't know why this one is suddenly -4em, but ye -->
-      <p style="margin-top: -4em">
-        <a href="{{website}}" style="display: inline">{{website}}</a>
-      </p>
+      {% if website != None %}
+        <h2>Website(s)</h2>
+        <!-- I don't know why this one is suddenly -4em, but ye -->
+        <p style="margin-top: -4em">
+          <a href="{{website}}" style="display: inline">{{website}}</a>
+        </p>
+      {% endif %}
     </div>
 
-    <h1 style="text-align:center">Cabinets
-      <hr>
-    </h1>
-    <table class="cabinet-table" border="1">
-      <tr>
-        <th class="cabinet-cell">
-          Cabinet
-        </th>
-        <th class="cabinet-cell">Cost</th>
-        <th class="cabinet-cell">Count</th>
-      </tr>
-      {% for cabinet in cabinets %}
+    {% if cabinets != [] %}
+      <h1 style="text-align:center">Cabinets
+        <hr>
+      </h1>
+      <table class="cabinet-table" border="1">
         <tr>
-          <td class="cabinet-cell">
-            {{cabinet[0]}}</td>
-          <td class="cabinet-cell">{{cabinet[1]}}</td>
-          <td style="text-align:center" class="cabinet-cell">{{cabinet[2]}}</td>
+          <th class="cabinet-cell">
+            Cabinet
+          </th>
+          <th class="cabinet-cell">Cost</th>
+          <th class="cabinet-cell">Count</th>
         </tr>
-      {% endfor %}
-    </table>
+        {% for cabinet in cabinets %}
+          <tr>
+            <td class="cabinet-cell">
+              {{cabinet[0]}}</td>
+            <td class="cabinet-cell">{{cabinet[1]}}</td>
+            <td style="text-align:center" class="cabinet-cell">{{cabinet[2]}}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
   </div>
 </body>
