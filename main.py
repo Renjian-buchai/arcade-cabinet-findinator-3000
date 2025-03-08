@@ -1,5 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for
-import sqlite3
+from flask import (
+    Flask,
+    render_template,
+    request,
+    redirect,
+    url_for,
+    send_from_directory,
+)
+import sqlite3, os
 
 app: Flask = Flask(__name__)
 
@@ -26,19 +33,28 @@ def index() -> str:
     if request.method == "POST":
         selected_country = request.form["Country"]
 
-        if selected_country not in country_data:
-            pass
-
         if selected_country == "Select country":
-            render_template("index.html", countries=countries)
+            return render_template("index.html", countries=countries)
 
         return redirect(url_for(f"country", selected_country=selected_country))
 
 
 @app.route("/<selected_country>/")
 def country(selected_country: str):
+
     arcades = None
     with connect() as db:
+        country = list(
+            db.execute(
+                """ select countries.name from countries 
+                    where countries.name like ?""",
+                (selected_country,),
+            )
+        )
+
+        if country == []:
+            return render_template("404.html", unfound=selected_country)
+
         arcades = [
             arcade[0]
             for arcade in db.execute(
@@ -100,6 +116,16 @@ def arcade(selected_country: str, arcade: str):
     )
 
 
+@app.route("/favicon.ico/")
+def favicon():
+    # return send_from_directory(
+    #     os.path.join(app.root_path, "static"),
+    #     "favicon.ico",
+    #     mimetype="image/vnd.microsoft.icon",
+    # )
+    return ("", 204)
+
+
 @app.route("/cabinets/<cabinet>/")
 def cabinets(cabinet: str) -> str:
     cabinet_name = None
@@ -127,10 +153,20 @@ def cabinet_list() -> str:
     cabinet_list = None
 
     with connect() as db:
-        cabinet_data = list(db.execute(""" select cabinet_name from cabinets;"""))
+        cabinet_data = list(db.execute(""" select cabinet_name from cabinets; """))
         cabinet_list = [cabinet[0] for cabinet in cabinet_data]
 
     return render_template("cabinet_list.html", cabinet_list=cabinet_list)
+
+
+@app.route("/404/")
+def not_found() -> str:
+    return render_template("404.html")
+
+
+@app.route("/404/<unfound>/")
+def not_found_url(unfound: str) -> str:
+    return render_template("404.html", unfound=unfound)
 
 
 if __name__ == "__main__":
