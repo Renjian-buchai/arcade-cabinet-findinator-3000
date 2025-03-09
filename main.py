@@ -131,6 +131,7 @@ def cabinets(cabinet: str) -> str:
     cabinet_name = None
     cabinet_desc = None
 
+    print(f"'{cabinet}'")
     with connect() as db:
         cabinet_data = list(
             db.execute(
@@ -139,6 +140,9 @@ def cabinets(cabinet: str) -> str:
                 (cabinet,),
             )
         )
+
+        if cabinet_data == []:
+            return render_template("404.html", unfound=cabinet)
 
         cabinet_name = cabinet_data[0][0]
         cabinet_desc = cabinet_data[0][1].split("\n")
