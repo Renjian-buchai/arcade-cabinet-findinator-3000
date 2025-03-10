@@ -166,8 +166,6 @@ def not_found_url(unfound: str) -> str:
 
 
 if __name__ == "__main__":
-    # app.run(debug=True, port=6942)
-
     app.jinja_env.lstrip_blocks = True
     app.jinja_env.trim_blocks = True
 
