@@ -2,9 +2,9 @@ name: Static Analysis
 
 on:
   push:
-    branches: ["trunk"]
+    branches: ["deploy"]
   pull_request:
-    branches: ["trunk"]
+    branches: ["deploy"]
 
 permissions:
   contents: read
