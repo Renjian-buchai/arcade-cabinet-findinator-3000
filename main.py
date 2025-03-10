@@ -4,9 +4,8 @@ from flask import (
     request,
     redirect,
     url_for,
-    send_from_directory,
 )
-import sqlite3, os
+import sqlite3
 
 app: Flask = Flask(__name__)
 
@@ -157,11 +156,6 @@ def cabinet_list() -> str:
 @app.route("/404/")
 def not_found() -> str:
     return render_template("elements/404.html")
-
-
-@app.route("/404/<unfound>/")
-def not_found_url(unfound: str) -> str:
-    return render_template("elements/404.html", unfound=unfound)
 
 
 if __name__ == "__main__":
