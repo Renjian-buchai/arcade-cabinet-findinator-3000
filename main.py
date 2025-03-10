@@ -7,6 +7,7 @@ from flask import (
     send_from_directory,
 )
 import sqlite3, os
+from waitress import serve
 
 app: Flask = Flask(__name__)
 
@@ -170,7 +171,7 @@ def not_found_url(unfound: str) -> str:
 
 
 if __name__ == "__main__":
-    app.run(debug=False, port=443)
-
     app.jinja_env.lstrip_blocks = True
     app.jinja_env.trim_blocks = True
+
+    serve(app, host="127.0.0.1", port=433, expose_tracebacks=True, threads=5)
