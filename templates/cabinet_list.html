@@ -2,21 +2,27 @@
 
 <head>
   <title>List of Cabinets</title>
-  {% include "head.html" %}
+  {% include "elements/head.html" %}
 </head>
 
 <body>
-  {% include "header.html" %}
+  <div style="display:flex; flex-direction:column; justify-content:space-between; min-height:100vh">
+    <div>
+      {% include "elements/header.html" %}
 
-  <div style="margin:8px">
-    <h1>Cabinet List</h1>
-    <ul>
-      {% for cabinet in cabinet_list %}
-        <li>
-          <a href="/cabinets/{{cabinet}}">{{cabinet}}</a>
-        </li>
-      {% endfor %}
-    </ul>
+      <div style="margin:8px">
+        <h1>Cabinet List</h1>
+        <ul>
+          {% for cabinet in cabinet_list %}
+            <li>
+              <a href="/cabinets/{{cabinet}}">{{cabinet}}</a>
+            </li>
+          {% endfor %}
+        </ul>
 
+      </div>
+    </div>
+
+    {% include "elements/footer.html" %}
   </div>
 </body>

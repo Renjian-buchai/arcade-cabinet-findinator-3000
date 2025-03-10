@@ -53,7 +53,7 @@ def country(selected_country: str):
         )
 
         if country == []:
-            return render_template("404.html", unfound=selected_country)
+            return render_template("elements/404.html", unfound=selected_country)
 
         arcades = [
             arcade[0]
@@ -142,7 +142,7 @@ def cabinets(cabinet: str) -> str:
         )
 
         if cabinet_data == []:
-            return render_template("404.html", unfound=cabinet)
+            return render_template("elements/404.html", unfound=cabinet)
 
         cabinet_name = cabinet_data[0][0]
         cabinet_desc = cabinet_data[0][1].split("\n")
@@ -165,12 +165,12 @@ def cabinet_list() -> str:
 
 @app.route("/404/")
 def not_found() -> str:
-    return render_template("404.html")
+    return render_template("elements/404.html")
 
 
 @app.route("/404/<unfound>/")
 def not_found_url(unfound: str) -> str:
-    return render_template("404.html", unfound=unfound)
+    return render_template("elements/404.html", unfound=unfound)
 
 
 if __name__ == "__main__":

@@ -32,6 +32,29 @@ header {
   background-color: lightgray;
 }
 
+footer {
+  height: fit-content;
+  margin: 0;
+  border-radius: 0;
+  background-color: lightgray;
+  padding: 8px;
+}
+
 body {
   margin: 0;
+}
+
+.header-text,
+.header-text:link,
+.header-text:visited {
+  text-decoration: none;
+  color: black;
+  margin: 0;
+  display: inline;
+}
+
+.header-text:hover {
+  color: grey;
+  margin: 0;
+  display: inline;
 }
