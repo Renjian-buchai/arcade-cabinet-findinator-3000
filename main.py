@@ -6,6 +6,7 @@ from flask import (
     url_for,
     send_from_directory,
 )
+from urllib.parse import urlencode
 import sqlite3, os
 
 app: Flask = Flask(__name__)
