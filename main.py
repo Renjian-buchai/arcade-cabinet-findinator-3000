@@ -21,7 +21,7 @@ def index() -> str:
     country_data = None
 
     with connect() as db:
-        countries = tuple(db.execute("select name from countries order by id asc"))
+        countries = db.execute("select name from countries order by id asc").fetchall()
 
         country_data = [country[0] for country in countries]
 
@@ -36,7 +36,9 @@ def index() -> str:
         if selected_country == "Select country":
             return render_template("index.html", countries=countries)
 
-        return redirect(url_for(f"country", selected_country=selected_country))
+        return redirect(url_for(f"country", selected_country=selected_country))  # type: ignore[return-value]
+
+    return ("", 204)  # type: ignore[return-value]
 
 
 @app.route("/<selected_country>/")
@@ -81,20 +83,14 @@ def arcade(selected_country: str, arcade: str):
                 join arcades on cabinet_info.arcade_id = arcades.arcade_id
                 where arcades.name = ?;""",
             (arcade,),
-        )
+        ).fetchall()
 
+        # If there's more than 1, I think we're really fucked now
         arcade_info = db.execute(
             """ select arcades.address, arcades.phone_no, arcades.operating_time, arcades.website, arcades.completed, arcades.last_updated from arcades
                 where arcades.name = ?;""",
             (arcade,),
-        )
-
-    cabinets: list[tuple] = [
-        (cabinet[0].strip(), cabinet[1].strip(), cabinet[2]) for cabinet in cabinets
-    ]
-
-    # If there's more than 1, I think we're really fucked now
-    arcade_info = list(arcade_info)[0]
+        ).fetchone()
 
     address: str = arcade_info[0].strip()
     phone_no: str = arcade_info[1]
@@ -118,11 +114,6 @@ def arcade(selected_country: str, arcade: str):
 
 @app.route("/favicon.ico/")
 def favicon():
-    # return send_from_directory(
-    #     os.path.join(app.root_path, "static"),
-    #     "favicon.ico",
-    #     mimetype="image/vnd.microsoft.icon",
-    # )
     return ("", 204)
 
 
