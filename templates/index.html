@@ -9,15 +9,19 @@
     src: url('static/Fonts/Outfit/Outfit-VariableFont_wght.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+  }
   
-  body {
-    background: url('static/gcm.webp');
+  body::before {
+    content: "";
+    background: url('static/gcm.webp') center/contain no-repeat, #1e1f33;
+    background-size: contain;
     position: fixed;
     inset: 0;
-    opacity: 0.8;
+    opacity: 0.42;
+    z-index: -1;
 
   }
-  }
+
   </style>
 </head>
 
@@ -39,7 +43,7 @@
     </section>
 
     <section>
-      <h1>Available countries:</h1>
+      <h1>Currently available countries:</h1>
       <ul>
         {% for country in countries %}
           <li>
