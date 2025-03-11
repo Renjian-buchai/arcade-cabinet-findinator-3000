@@ -3,6 +3,26 @@
 <head>
   <title>Rhythm Game Finder-inator</title>
   {% include "elements/head.html" %}
+  <style>
+  @font-face {
+    font-family: 'Outfit';
+    src: url('static/Fonts/Outfit/Outfit-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  body::before {
+    content: "";
+    background: url('static/gcm.webp') center/contain no-repeat, #1e1f33;
+    background-size: contain;
+    position: fixed;
+    inset: 0;
+    opacity: 0.42;
+    z-index: -1;
+
+  }
+
+  </style>
 </head>
 
 <body>
@@ -23,7 +43,7 @@
     </section>
 
     <section>
-      <h1>Available countries:</h1>
+      <h1>Currently available countries:</h1>
       <ul>
         {% for country in countries %}
           <li>

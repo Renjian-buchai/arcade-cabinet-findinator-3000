@@ -25,7 +25,7 @@
 
     <h2>Address</h2>
     <div style=" white-space:pre-line;">
-      <p class="meta-p">{{address}}</p>
+      <a href="https://maps.google.com/?q={{ address | urlencode }}" style="display: inline">{{address}}</a>
       {% if phone_no != None %}
         <h2>Contact Number</h2>
         <p class="meta-p">{{phone_no}}</p>

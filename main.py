@@ -5,6 +5,8 @@ from flask import (
     redirect,
     url_for,
 )
+
+from urllib.parse import urlencode
 import sqlite3
 
 app: Flask = Flask(__name__)
