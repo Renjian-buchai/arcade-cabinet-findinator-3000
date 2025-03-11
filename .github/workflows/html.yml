@@ -14,22 +14,5 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Proof HTML
-  # You may pin to the exact commit or the version.
-  # uses: anishathalye/proof-html@7b6ef60f83a30f2b7ed9b8b537804cee327ca2d5
-      uses: anishathalye/proof-html@v2.2.0
-      with:
-        # The directory to scan
-        directory: /templates/
-        # Validate HTML
-        check_html: true
-        # Validate CSS
-        check_css: true
-        # Check whether favicons are valid
-        check_favicon: true
-        # Allow anchors with missing href tags
-        allow_missing_href: true
-        # Require that links use HTTPS
-        enforce_https: true
-        # Number of times to retry checking links
-        retries: 1
+    - name: HTML5 Validator
+      uses: Cyb3r-Jak3/html5validator-action@v7.2.0
